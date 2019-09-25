@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 public class ImageTargetController : MonoBehaviour
 {
 
+    [SerializeField] private bool isDynamic;
     public enum TargetType
     {
         LocalImage,
@@ -184,35 +185,49 @@ public class ImageTargetController : MonoBehaviour
 
     public void OnTracking(Matrix4x4 pose)
     {
-        Debug.Log("[EasyAR] OnTracking targtet name: " + target.name());
-        Utility.SetMatrixOnTransform(transform, pose);
-        if (xFlip)
-        {
-            var scale = transform.localScale;
-            scale.x = -scale.x;
-            transform.localScale = scale;
-        }
+        // Debug.Log("[EasyAR] OnTracking targtet name: " + target.name());
 
-        // transform.localScale = transform.localScale * TargetSize;
+        if(isDynamic){
+            Utility.SetMatrixOnTransform(transform, pose);
+            if (xFlip)
+            {
+                var scale = transform.localScale;
+                scale.x = -scale.x;
+                transform.localScale = scale;
+            }
+
+            transform.localScale = transform.localScale * TargetSize;
+        }else{
+            
+
+        }
     }
 
     public void OnLost()
     {
-        Debug.Log("[EasyAR] OnLost targtet name: " + target.name());
-        gameObject.SetActive(false);
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
+        // Debug.Log("[EasyAR] OnLost targtet name: " + target.name());
+        if(isDynamic){
+            gameObject.SetActive(false);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }else{
+
         }
     }
 
     public void OnFound()
     {
-        Debug.Log("[EasyAR] OnFound targtet name: " + target.name());
-        gameObject.SetActive(true);
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(true);
+        // Debug.Log("[EasyAR] OnFound targtet name: " + target.name());
+        if(isDynamic){
+            gameObject.SetActive(true);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }else{
+            
         }
     }
 

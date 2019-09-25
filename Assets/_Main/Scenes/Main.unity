@@ -6641,7 +6641,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397054980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9022ccdbb5252184697a3245edf7240a, type: 3}
+  m_Script: {fileID: 11500000, guid: 964744eea9fbb154d9454a173e31521b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tracked: 0
@@ -9249,7 +9249,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1869671737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9022ccdbb5252184697a3245edf7240a, type: 3}
+  m_Script: {fileID: 11500000, guid: 964744eea9fbb154d9454a173e31521b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tracked: 0
@@ -11007,6 +11007,7 @@ MonoBehaviour:
   Type: 1
   ImageTracker: {fileID: 1355920162}
   targetType: 0
+  xFlip: 0
 --- !u!64 &575944311329728712
 MeshCollider:
   m_ObjectHideFlags: 0
