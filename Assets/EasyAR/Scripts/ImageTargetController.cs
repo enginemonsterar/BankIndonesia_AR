@@ -193,7 +193,7 @@ public class ImageTargetController : MonoBehaviour
             transform.localScale = scale;
         }
 
-        transform.localScale = transform.localScale * TargetSize;
+        // transform.localScale = transform.localScale * TargetSize;
     }
 
     public void OnLost()
