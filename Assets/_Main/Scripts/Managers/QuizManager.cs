@@ -14,6 +14,8 @@ public class QuizManager : Singleton<QuizManager>
 
     private bool[] checkQuestHasChoosed = new bool[]{false,false};
 
+    [SerializeField] private GameObject flyItemWorld;
+
     [Header("UI")]
 
     
@@ -25,7 +27,9 @@ public class QuizManager : Singleton<QuizManager>
 
     [SerializeField] private Image[] resultImages;
     [SerializeField] private Sprite[] resultSprites;
-    [SerializeField] private Button answerButton;
+    [SerializeField] private Button finishButton;
+
+    [SerializeField] private GameObject[] defaultSwitchers;
     
 
     [Header("Animator")]
@@ -40,6 +44,7 @@ public class QuizManager : Singleton<QuizManager>
 
     public void CollectFlyingItem(int index){
         SetQuest(index);
+        flyItemWorld.SetActive(false);
     }
 
     
@@ -76,7 +81,52 @@ public class QuizManager : Singleton<QuizManager>
             pointAnimator.transform.GetChild(0).GetComponent<Text>().text = "+" + tempAddedPoints;
             pointAnimator.SetTrigger("AddScore");
             PrefsManager.Instance.Points += tempAddedPoints;
+            
         }
+
+        //Disable Switcher
+        switchManagers[0].GetComponent<Button>().interactable = false;
+        switchManagers[1].GetComponent<Button>().interactable = false;
+
+        //Disable Finish Button
+        finishButton.interactable = false;
+
+        StartCoroutine(ResetQuizPanel(3));
+    }
+
+    public void ResetQuizPanel_(){
+        StartCoroutine(ResetQuizPanel(0));
+    }
+
+    IEnumerator ResetQuizPanel(float waitTime){
+
+        yield return new WaitForSeconds(waitTime);
+
+        //Enable Switcher Button
+        switchManagers[0].GetComponent<Button>().interactable = true;
+        switchManagers[1].GetComponent<Button>().interactable = true;
+
+        //Deactive Switcher
+        switchManagers[0].gameObject.SetActive(false);
+        switchManagers[1].gameObject.SetActive(false);
+
+        //Active Default Switcher
+        defaultSwitchers[0].SetActive(true);
+        defaultSwitchers[1].SetActive(true);
+
+        //Disable Finish Button
+        finishButton.interactable = true;
+
+        //Deactive resultImage
+        resultImages[0].gameObject.SetActive(false);
+        resultImages[1].gameObject.SetActive(false);
+
+        //Decative quiz pane;
+        quizPanel.SetActive(false);
+
+        //Active fly item world
+        flyItemWorld.SetActive(true);
+        
     }
 
     
@@ -84,7 +134,7 @@ public class QuizManager : Singleton<QuizManager>
         checkQuestHasChoosed[index] = true;
 
         if(checkQuestHasChoosed[0] == true && checkQuestHasChoosed[1] == true){
-            answerButton.interactable = true;
+            finishButton.interactable = true;
         }
     }
 

@@ -29,7 +29,7 @@ public class ModeManager : Singleton<ModeManager>
         }
     }
 
-    void ChangeToARMode(){
+    public void ChangeToARMode(){
         // Debug.Log("Change to ARMode");
         nowMode = GameMode.ARMode;
         //Activate ARMode
@@ -38,7 +38,7 @@ public class ModeManager : Singleton<ModeManager>
         QuizModeManager.Instance.DeActivateMode(); 
     }
 
-    void ChangeToQuizMode(){
+    public void ChangeToQuizMode(){
         // Debug.Log("QuizMode Active");
         nowMode = GameMode.QuizMode;
 

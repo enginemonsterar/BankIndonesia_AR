@@ -19,6 +19,60 @@ namespace Michsky.UI.ModernUIPack
         Animator switchAnimator;
         Button switchButton;
 
+        /// <summary>
+        /// This function is called when the object becomes enabled and active.
+        /// </summary>
+        void OnEnable()
+        {
+            switchAnimator = gameObject.GetComponent<Animator>();
+            if (saveValue == true)
+            {
+                if (PlayerPrefs.GetString(switchTag + "Switch") == "")
+                {
+                    if (isOn == true)
+                    {
+                        switchAnimator.Play("Switch On");
+                        isOn = true;
+                        PlayerPrefs.SetString(switchTag + "Switch", "true");
+                    }
+
+                    else
+                    {
+                        switchAnimator.Play("Switch Off");
+                        isOn = false;
+                        PlayerPrefs.SetString(switchTag + "Switch", "false");
+                    }
+                }
+
+                else if (PlayerPrefs.GetString(switchTag + "Switch") == "true")
+                {
+                    switchAnimator.Play("Switch On");
+                    isOn = true;
+                }
+
+                else if (PlayerPrefs.GetString(switchTag + "Switch") == "false")
+                {
+                    switchAnimator.Play("Switch Off");
+                    isOn = false;
+                }
+            }
+
+            else
+            {
+                if (isOn == true)
+                {
+                    switchAnimator.Play("Switch On");
+                    isOn = true;
+                }
+
+                else
+                {
+                    switchAnimator.Play("Switch Off");
+                    isOn = false;
+                }
+            }
+        }
+
         void Start()
         {
             switchAnimator = gameObject.GetComponent<Animator>();

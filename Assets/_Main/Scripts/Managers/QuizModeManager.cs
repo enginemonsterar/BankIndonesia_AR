@@ -27,6 +27,10 @@ public class QuizModeManager : Singleton<QuizModeManager>
 
     }
 
+    void Update(){
+        pointText.text = PrefsManager.Instance.Points + "";
+    }
+
     public void DeActivateMode(){
         quizModeFooterPointHolder.SetActive(false);
         flyItemWorld.SetActive(false);
