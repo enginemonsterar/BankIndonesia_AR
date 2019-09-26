@@ -12,12 +12,19 @@ public class QuizModeManager : Singleton<QuizModeManager>
     [Header("UI")]
     [SerializeField] private GameObject quizModeFooterPointHolder;
     [SerializeField] private GameObject collectionButton;
+
+    [SerializeField] private Text pointText;
        
     
     public void ActivateMode(){
         quizModeFooterPointHolder.SetActive(true);
         flyItemWorld.SetActive(true);        
         collectionButton.SetActive(true);
+
+        /////
+
+        pointText.text = PrefsManager.Instance.Points + "";
+
     }
 
     public void DeActivateMode(){

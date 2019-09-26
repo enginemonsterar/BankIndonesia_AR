@@ -15,6 +15,8 @@ public class QuizManager : Singleton<QuizManager>
     private bool[] checkQuestHasChoosed = new bool[]{false,false};
 
     [Header("UI")]
+
+    
     [SerializeField] private Text questText;
     [SerializeField] private Image questImage;
     [SerializeField] private Sprite[] questSprites;
@@ -47,11 +49,14 @@ public class QuizManager : Singleton<QuizManager>
 
         bool anyTrue = false;
 
+        int tempAddedPoints = 0;
+
         //Check First Answer
         resultImages[0].gameObject.SetActive(true);
         if(switchManagers[0].isOn == (question.GetRealAnswer()[0] == 1)){
             resultImages[0].sprite = resultSprites[1];
             anyTrue = true;
+            tempAddedPoints += 100;
         }else{
             resultImages[0].sprite = resultSprites[0];
         }
@@ -61,13 +66,16 @@ public class QuizManager : Singleton<QuizManager>
         if(switchManagers[1].isOn == (question.GetRealAnswer()[1] == 1)){
             resultImages[1].sprite = resultSprites[1];
             anyTrue = true;
+            tempAddedPoints += 100;
         }else{
             resultImages[1].sprite = resultSprites[0];
         }
 
         if(anyTrue){
             pointAnimator.gameObject.SetActive(true);
+            pointAnimator.transform.GetChild(0).GetComponent<Text>().text = "+" + tempAddedPoints;
             pointAnimator.SetTrigger("AddScore");
+            PrefsManager.Instance.Points += tempAddedPoints;
         }
     }
 
