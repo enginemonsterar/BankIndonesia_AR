@@ -14,12 +14,12 @@ public class ARModeManager : Singleton<ARModeManager>
     
     
     public void ActivateMode(){
-        arModeFooterToolHolder.SetActive(true);
+        arModeImageTargets.SetActive(true);
         arModeFooterToolHolder.SetActive(true);
     }
 
     public void DeActivateMode(){
-        arModeFooterToolHolder.SetActive(false);
+        arModeImageTargets.SetActive(false);
         arModeFooterToolHolder.SetActive(false);
     }
 }

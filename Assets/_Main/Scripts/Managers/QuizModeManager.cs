@@ -7,22 +7,23 @@ using MonsterAR.Utility;
 public class QuizModeManager : Singleton<QuizModeManager>
 {
     [Header("Main")]
-    [SerializeField] private GameObject quizModeImageTargets;
+    [SerializeField] private GameObject flyItemWorld;
 
     [Header("UI")]
     [SerializeField] private GameObject quizModeFooterPointHolder;
-    [SerializeField] private GameObject quizPanel;
-    
+    [SerializeField] private GameObject collectionButton;
+       
     
     public void ActivateMode(){
         quizModeFooterPointHolder.SetActive(true);
-        quizModeImageTargets.SetActive(true);
-        quizPanel.SetActive(true);
+        flyItemWorld.SetActive(true);        
+        collectionButton.SetActive(true);
     }
 
     public void DeActivateMode(){
         quizModeFooterPointHolder.SetActive(false);
-        quizModeImageTargets.SetActive(false);
-        quizPanel.SetActive(false);
+        flyItemWorld.SetActive(false);
+        collectionButton.SetActive(false);
+        
     }
 }

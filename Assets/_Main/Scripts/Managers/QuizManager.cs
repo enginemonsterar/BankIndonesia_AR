@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Michsky.UI.ModernUIPack;
+using MonsterAR.Utility;
 
-public class QuizManager : MonoBehaviour
+public class QuizManager : Singleton<QuizManager>
 {
+    [SerializeField] private GameObject quizPanel;
+    [SerializeField] private SwitchManager[] switchManagers;
     private int nowQuesIndex;
     private List<Question> questions = new List<Question>();
-    [SerializeField] private SwitchManager[] switchManagers;
 
     private bool[] checkQuestHasChoosed = new bool[]{false,false};
 
@@ -31,7 +33,11 @@ public class QuizManager : MonoBehaviour
     void Start()
     {
         AssignQuestion();
-        SetQuest(0);
+        
+    }
+
+    public void CollectFlyingItem(int index){
+        SetQuest(index);
     }
 
     
@@ -60,6 +66,7 @@ public class QuizManager : MonoBehaviour
         }
 
         if(anyTrue){
+            pointAnimator.gameObject.SetActive(true);
             pointAnimator.SetTrigger("AddScore");
         }
     }
@@ -74,6 +81,7 @@ public class QuizManager : MonoBehaviour
     }
 
     void SetQuest(int index){
+        quizPanel.SetActive(true);
         nowQuesIndex = index;
         questImage.sprite = questSprites[nowQuesIndex];
         questText.text = questions[nowQuesIndex].GetQuest();

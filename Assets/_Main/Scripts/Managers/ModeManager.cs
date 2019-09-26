@@ -16,7 +16,8 @@ public class ModeManager : Singleton<ModeManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        //DefaultMode is ARMode
+        ChangeToARMode();
     }
 
     public void ChangeGameMode(){
@@ -31,7 +32,6 @@ public class ModeManager : Singleton<ModeManager>
     void ChangeToARMode(){
         // Debug.Log("Change to ARMode");
         nowMode = GameMode.ARMode;
-
         //Activate ARMode
         ARModeManager.Instance.ActivateMode(); 
         //DeActivate QuizMode
