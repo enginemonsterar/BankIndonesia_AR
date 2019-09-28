@@ -8,6 +8,7 @@ public class QuizModeManager : Singleton<QuizModeManager>
 {
     [Header("Main")]
     [SerializeField] private GameObject flyItemWorld;
+    [SerializeField] private WebCam webCamComponent;
 
     [Header("UI")]
     [SerializeField] private GameObject quizModeFooterPointHolder;
@@ -20,6 +21,7 @@ public class QuizModeManager : Singleton<QuizModeManager>
         quizModeFooterPointHolder.SetActive(true);
         flyItemWorld.SetActive(true);        
         collectionButton.SetActive(true);
+        webCamComponent.enabled = true;
 
         /////
 
@@ -35,6 +37,7 @@ public class QuizModeManager : Singleton<QuizModeManager>
         quizModeFooterPointHolder.SetActive(false);
         flyItemWorld.SetActive(false);
         collectionButton.SetActive(false);
+        webCamComponent.enabled = false;
         
     }
 }
