@@ -12,8 +12,12 @@ using easyar;
 using System.Runtime.InteropServices;
 public class ImageTargetController : MonoBehaviour
 {
-
+    private int markerIndex;
     [SerializeField] private bool isDynamic;
+
+    void Awake(){
+        markerIndex = transform.GetSiblingIndex();
+    }
     public enum TargetType
     {
         LocalImage,
@@ -220,6 +224,7 @@ public class ImageTargetController : MonoBehaviour
     public void OnFound()
     {
         // Debug.Log("[EasyAR] OnFound targtet name: " + target.name());
+        ARModeManager.Instance.SetARMateri(markerIndex);
         if(isDynamic){
             gameObject.SetActive(true);
             for (int i = 0; i < transform.childCount; i++)
