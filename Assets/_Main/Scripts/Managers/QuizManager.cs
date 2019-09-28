@@ -97,7 +97,7 @@ public class QuizManager : Singleton<QuizManager>
         //Disable Finish Button
         finishButton.interactable = false;
 
-        StartCoroutine(ResetQuizPanel(3));
+        StartCoroutine(ResetQuizPanel(1));
     }
 
     public void ResetQuizPanel_(){
@@ -121,7 +121,7 @@ public class QuizManager : Singleton<QuizManager>
         defaultSwitchers[1].SetActive(true);
 
         //Disable Finish Button
-        finishButton.interactable = true;
+        finishButton.interactable = false;
 
         //Deactive resultImage
         resultImages[0].gameObject.SetActive(false);
@@ -168,5 +168,30 @@ public class QuizManager : Singleton<QuizManager>
             new string[]{"Menteri Keuangan","Menteri Kelautan"},
             new int[]{1,0}
         ));
+        questions.Add(new Question(
+            "Siapakah tokoh pada gambar disamping?",
+            new string[]{"Ir. Soekarno","Drs. Moh. Hatta"},
+            new string[]{"Presiden Pertama Republik Indonesia","Wakil Presiden Republik Indonesia"},
+            new int[]{0,0}
+        ));
+        questions.Add(new Question(
+            "Apakah warna bendera Negara Republik Indonesia?",
+            new string[]{"Biru","Merah "},
+            new string[]{"Putih","Merah"},
+            new int[]{1,0}
+        ));
+        questions.Add(new Question(
+            "Pada tanggal dan tahun berapakah Indonesia Merdeka?",
+            new string[]{"17 Agustus","17 Oktober"},
+            new string[]{"2019","1945"},
+            new int[]{0,1}
+        ));
+        questions.Add(new Question(
+            "Bangunan apakah yang terdapat pada gambar di samping?",
+            new string[]{"Perpustakaan","Museum"},
+            new string[]{"Indonesia","Bank Indonesia"},
+            new int[]{1,1}
+        ));
+        
     }
 }
