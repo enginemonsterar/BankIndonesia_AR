@@ -12,21 +12,41 @@ public class CollectionManager : MonoBehaviour
 
     private MoneyType nowType = MoneyType.Paper;
 
+    [SerializeField] private GameObject[] paperMoneyItems;
+
     [Header("UI")]
     [SerializeField] private Sprite[] typeSprites;
     [SerializeField] private Image[] typeImages;
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        
+             
+        ChangeToMoneyType();
+    }
+
+    
+    void Update()
+    {
+        for (int i = 0; i < PrefsManager.Instance.PaperMoneyColletions; i++)
+        {
+            paperMoneyItems[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            paperMoneyItems[i].transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     public void ChangeToMoneyType(){
         nowType = MoneyType.Paper;
         typeImages[0].sprite = typeSprites[1];
         typeImages[1].sprite = typeSprites[2];
+
+        //active
+        for (int i = 0; i < PrefsManager.Instance.PaperMoneyColletions; i++)
+        {
+            paperMoneyItems[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            paperMoneyItems[i].transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
     public void ChangeToCoinType(){
         nowType = MoneyType.Coin;

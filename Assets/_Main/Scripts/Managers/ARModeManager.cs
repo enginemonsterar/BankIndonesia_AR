@@ -14,6 +14,10 @@ public class ARModeManager : Singleton<ARModeManager>
     [SerializeField] private AudioSource infoAudioSource;
     [SerializeField] private AudioClip[] infoAudioClips;
 
+    [SerializeField] private Material photoMaterial;
+
+    [SerializeField] private Texture[] photoTextures;
+
     [Header("UI")]
     [SerializeField] private GameObject arModeFooterToolHolder;
     [SerializeField] private Text titleText;
@@ -21,13 +25,14 @@ public class ARModeManager : Singleton<ARModeManager>
             
     void Start()
     {
-        AssignARMateri();
+        // AssignARMateri();
     }
 
     public void SetARMateri(int index){
-        titleText.text = arMateri[index].GetTitle();
-        materiText.text = arMateri[index].GetDescription();
-        infoAudioSource.clip = infoAudioClips[index];
+        // titleText.text = arMateri[index].GetTitle();
+        // materiText.text = arMateri[index].GetDescription();
+        // infoAudioSource.clip = infoAudioClips[index];
+        // photoMaterial.SetTexture("_MainTex", photoTextures[index]);
                 
     }
 

@@ -34,6 +34,7 @@ public class QuizManager : Singleton<QuizManager>
 
     [Header("Animator")]
     [SerializeField] private Animator pointAnimator;
+    [SerializeField] private Animator collectionAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +87,10 @@ public class QuizManager : Singleton<QuizManager>
             pointAnimator.gameObject.SetActive(true);
             pointAnimator.transform.GetChild(0).GetComponent<Text>().text = "+" + tempAddedPoints;
             pointAnimator.SetTrigger("AddScore");
+            collectionAnimator.SetTrigger("AddScore");
             PrefsManager.Instance.Points += tempAddedPoints;
+            PrefsManager.Instance.PaperMoneyColletions++;
+
             
         }
 
