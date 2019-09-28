@@ -126,6 +126,10 @@ public class QuizManager : Singleton<QuizManager>
 
         //Active fly item world
         flyItemWorld.SetActive(true);
+
+        //False choosedAnser
+        checkQuestHasChoosed[0] = false;
+        checkQuestHasChoosed[1] = false;
         
     }
 
