@@ -39,6 +39,12 @@ public class QuizManager : Singleton<QuizManager>
     void Start()
     {
         AssignQuestion();
+
+
+        SetQuest(0);
+        flyItemWorld.SetActive(false);
+        quizPanel.SetActive(false);
+
         
     }
 
