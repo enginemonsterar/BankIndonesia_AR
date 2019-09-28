@@ -3,6 +3,12 @@ using MonsterAR.Utility;
 
 public class PrefsManager : Singleton<PrefsManager>
 {
+
+    [SerializeField] private bool reset;
+    void Start(){
+        if(reset)
+            PlayerPrefs.DeleteAll();
+    }
     public int Points {
         get { return PlayerPrefs.GetInt("Points",0); }
         set { PlayerPrefs.SetInt("Points",value); }

@@ -12,7 +12,12 @@ public class CollectionManager : MonoBehaviour
 
     private MoneyType nowType = MoneyType.Paper;
 
+    [SerializeField] private GameObject detailMoneyHolder;
+    [SerializeField] private GameObject paperMoneyHolder;
+    [SerializeField] private GameObject coinMoneyHolder;
+
     [SerializeField] private GameObject[] paperMoneyItems;
+    [SerializeField] private GameObject[] coinMoneyItems;
 
     [Header("UI")]
     [SerializeField] private Sprite[] typeSprites;
@@ -33,6 +38,9 @@ public class CollectionManager : MonoBehaviour
         {
             paperMoneyItems[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
             paperMoneyItems[i].transform.GetChild(1).gameObject.SetActive(true);
+
+            coinMoneyItems[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            coinMoneyItems[i].transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -41,16 +49,19 @@ public class CollectionManager : MonoBehaviour
         typeImages[0].sprite = typeSprites[1];
         typeImages[1].sprite = typeSprites[2];
 
-        //active
-        for (int i = 0; i < PrefsManager.Instance.PaperMoneyColletions; i++)
-        {
-            paperMoneyItems[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
-            paperMoneyItems[i].transform.GetChild(1).gameObject.SetActive(true);
-        }
+        paperMoneyHolder.SetActive(true);
+        coinMoneyHolder.SetActive(false);
+
+        detailMoneyHolder.GetComponent<DetailMoney>().ActivateMoney(0,1);
     }
     public void ChangeToCoinType(){
         nowType = MoneyType.Coin;
         typeImages[0].sprite = typeSprites[0];
         typeImages[1].sprite = typeSprites[3];
+
+        paperMoneyHolder.SetActive(false);
+        coinMoneyHolder.SetActive(true);
+
+        detailMoneyHolder.GetComponent<DetailMoney>().ActivateMoney(1,0);
     }
 }

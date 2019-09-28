@@ -85,11 +85,15 @@ public class QuizManager : Singleton<QuizManager>
 
         if(anyTrue){
             pointAnimator.gameObject.SetActive(true);
+            collectionAnimator.gameObject.SetActive(true);
             pointAnimator.transform.GetChild(0).GetComponent<Text>().text = "+" + tempAddedPoints;
             pointAnimator.SetTrigger("AddScore");
             collectionAnimator.SetTrigger("AddScore");
             PrefsManager.Instance.Points += tempAddedPoints;
-            PrefsManager.Instance.PaperMoneyColletions++;
+            if(PrefsManager.Instance.PaperMoneyColletions < 8)
+                PrefsManager.Instance.PaperMoneyColletions++;
+            if(PrefsManager.Instance.CoinMoneyColletions < 8)
+                PrefsManager.Instance.CoinMoneyColletions++;
 
             
         }

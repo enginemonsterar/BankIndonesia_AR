@@ -6,12 +6,12 @@ using MonsterAR.Utility;
 
 public class ARModeManager : Singleton<ARModeManager>
 {
-    [Header("Main")]
-    [SerializeField] private GameObject arModeImageTargets;
+    [Header("Main")]    
+    [SerializeField] private GameObject arModeImageTargetHolder;
+    private int imageTargetIndex;
 
     private List<ARMateri> arMateri = new List<ARMateri>();
-    
-    [SerializeField] private AudioSource infoAudioSource;
+        
     [SerializeField] private AudioClip[] infoAudioClips;
 
     [SerializeField] private Material photoMaterial;
@@ -20,8 +20,10 @@ public class ARModeManager : Singleton<ARModeManager>
 
     [Header("UI")]
     [SerializeField] private GameObject arModeFooterToolHolder;
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text materiText;
+    // [SerializeField] private Text titleText;
+    // [SerializeField] private Text materiText;
+    [SerializeField] private GameObject mapHolder;
+    [SerializeField] private Sprite[] mapSprites;
             
     void Start()
     {
@@ -29,6 +31,9 @@ public class ARModeManager : Singleton<ARModeManager>
     }
 
     public void SetARMateri(int index){
+        imageTargetIndex = index;
+        mapHolder.SetActive(true);
+        mapHolder.transform.GetChild(index).GetComponent<Image>().sprite = mapSprites[index];
         // titleText.text = arMateri[index].GetTitle();
         // materiText.text = arMateri[index].GetDescription();
         // infoAudioSource.clip = infoAudioClips[index];
@@ -36,14 +41,19 @@ public class ARModeManager : Singleton<ARModeManager>
                 
     }
 
+    public void CloseMap(){
+        mapHolder.SetActive(false);
+        arModeImageTargetHolder.transform.GetChild(imageTargetIndex).GetChild(0).gameObject.SetActive(true);
+    }
+
     public void ActivateMode(){
-        arModeImageTargets.SetActive(true);
+        arModeImageTargetHolder.SetActive(true);
         arModeFooterToolHolder.SetActive(true);
         
     }
 
     public void DeActivateMode(){
-        arModeImageTargets.SetActive(false);
+        arModeImageTargetHolder.SetActive(false);
         arModeFooterToolHolder.SetActive(false);
     }
 
