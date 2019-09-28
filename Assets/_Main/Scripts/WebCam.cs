@@ -8,41 +8,22 @@ public class WebCam : MonoBehaviour {
     public WebCamTexture webCameraTexture;
     // Use this for initialization
     void Start () {
-        cam = GetComponent<Camera>();
-        //if (Application.isMobilePlatform)
-        //{
-        //    GameObject cameraParent = new GameObject("camParent");
-        //    cameraParent.transform.position = this.transform.position;
-        //    this.transform.parent = cameraParent.transform;
-        //    cameraParent.transform.Rotate(Vector3.right, 90);
-        //}
+        // cam = GetComponent<Camera>();
+   
 
         Input.gyro.enabled = true;
 
-        
-
-        webCameraTexture = new WebCamTexture();
-        webCameraPlane.GetComponent<MeshRenderer>().material.mainTexture = webCameraTexture;
-        webCameraTexture.requestedWidth = 1920;
-        webCameraTexture.requestedHeight = 1080;
-        webCameraTexture.filterMode = FilterMode.Trilinear;
-        webCameraTexture.Play();
+        // webCameraTexture = new WebCamTexture();
+        // webCameraPlane.GetComponent<MeshRenderer>().material.mainTexture = webCameraTexture;
+        // webCameraTexture.requestedWidth = 1920;
+        // webCameraTexture.requestedHeight = 1080;
+        // webCameraTexture.filterMode = FilterMode.Trilinear;
+        // webCameraTexture.Play();
 
     }
 
     // Update is called once per frame
-    void Update () {
-        //float pos = (cam.nearClipPlane + 0.01f);
-
-        //webCameraPlane.transform.position = cam.transform.position + cam.transform.forward * pos;
-        //webCameraPlane.transform.LookAt(cam.transform);
-        //webCameraPlane.transform.Rotate(90.0f, 0.0f, 0.0f);
-
-        //float h = (Mathf.Tan(cam.fieldOfView * Mathf.Deg2Rad * 0.5f) * pos * 2f) / 10.0f;
-
-        //webCameraPlane.transform.localScale = new Vector3(h * cam.aspect, 1.0f, h);
-
-       
+    void Update () {      
 
         Quaternion cameraRotation = new Quaternion(Input.gyro.attitude.x, Input.gyro.attitude.y, -Input.gyro.attitude.z, -Input.gyro.attitude.w);
         if (Input.gyro.enabled)

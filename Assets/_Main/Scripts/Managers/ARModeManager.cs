@@ -8,6 +8,7 @@ public class ARModeManager : Singleton<ARModeManager>
 {
     [Header("Main")]
     [SerializeField] private GameObject arModeImageTargets;
+    
 
     [Header("UI")]
     [SerializeField] private GameObject arModeFooterToolHolder;
@@ -16,6 +17,7 @@ public class ARModeManager : Singleton<ARModeManager>
     public void ActivateMode(){
         arModeImageTargets.SetActive(true);
         arModeFooterToolHolder.SetActive(true);
+        
     }
 
     public void DeActivateMode(){
