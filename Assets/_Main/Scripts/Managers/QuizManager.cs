@@ -43,7 +43,7 @@ public class QuizManager : Singleton<QuizManager>
 
 
         SetQuest(0);
-        flyItemWorld.SetActive(false);
+        // flyItemWorld.SetActive(false);
         quizPanel.SetActive(false);
 
         

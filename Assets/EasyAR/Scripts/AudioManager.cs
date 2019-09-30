@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Image buttonImage;
     [SerializeField] private Sprite[] buttonSprites;
 
-    void Awake()
+    void Update()
     {
         if(PrefsManager.Instance.AudioActiveMode == 1){                        
             audioListener.enabled = true;
