@@ -6,20 +6,13 @@ using UnityEngine;
 
 public class RotateWithMouse : MonoBehaviour {
 
-	float rotSpeed = 0.1f;
-	[SerializeField] private bool Horizontal;
-	[SerializeField] private bool Vertical;
-	float rotX = 0;
-	float rotY = 0;
+	float rotSpeed = 3f;
 
 	void OnMouseDrag(){
-		if(Vertical)
-			rotX = Input.GetAxis("Mouse X") * rotSpeed ;
+		float rotX = Input.GetAxis("Mouse X") * rotSpeed ;
+		float rotY = Input.GetAxis("Mouse Y") * rotSpeed ;
 
-		if(Horizontal)
-			rotY = Input.GetAxis("Mouse Y") * rotSpeed ;
-
-		transform.RotateAround(Vector3.up, -rotX);
-		transform.RotateAround(Vector3.right, rotY);
+		transform.Rotate(Vector3.forward, rotX);
+		// transform.Rotate(Vector3.right, rotY);
 	}
 }
