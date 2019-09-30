@@ -19,9 +19,9 @@ public class QuizModeManager : Singleton<QuizModeManager>
     
     public void ActivateMode(){
         quizModeFooterPointHolder.SetActive(true);
-        flyItemWorld.SetActive(true);        
         collectionButton.SetActive(true);
         webCamComponent.enabled = true;
+        flyItemWorld.SetActive(true);        
 
         /////
 
@@ -35,9 +35,9 @@ public class QuizModeManager : Singleton<QuizModeManager>
 
     public void DeActivateMode(){
         quizModeFooterPointHolder.SetActive(false);
-        // flyItemWorld.SetActive(false);
         collectionButton.SetActive(false);
         webCamComponent.enabled = false;
+        flyItemWorld.SetActive(false);
         
     }
 }
