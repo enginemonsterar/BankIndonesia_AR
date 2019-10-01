@@ -54,6 +54,7 @@ public class InformationPanel : MonoBehaviour
 
         photoPlane.SetActive(true);
         videoPlane.SetActive(false);
+        VideoManager.Instance.DeactiveVideo();
 
         infoBox.GetComponent<AudioSource>().UnPause();        
     }
@@ -65,7 +66,7 @@ public class InformationPanel : MonoBehaviour
         videoSwitchImage.sprite = videoSwitchSprites[1];        
 
         photoPlane.SetActive(false);
-        videoPlane.SetActive(true);
+        videoPlane.SetActive(true);        
 
         infoBox.GetComponent<AudioSource>().Pause();
 

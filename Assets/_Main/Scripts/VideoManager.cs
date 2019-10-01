@@ -8,6 +8,9 @@ using MonsterAR.Utility;
 public class VideoManager : Singleton<VideoManager>
 {
     private int nowVideoPlayerIndex;
+    private bool inFullScreen;
+
+    private bool onTrackingMarker;
     [SerializeField] private VideoPlayer[] videoPlayers;
     [SerializeField] private GameObject canvasFooter;
     [SerializeField] private GameObject closeButton;    
@@ -41,6 +44,10 @@ public class VideoManager : Singleton<VideoManager>
     }
 
     public void ChangeToFullScreen(){
+
+
+        inFullScreen = true;
+
         videoPlayers[nowVideoPlayerIndex].renderMode = VideoRenderMode.CameraNearPlane;
         videoPlayers[nowVideoPlayerIndex].targetCamera = this.targetCamera;
         videoPlayers[nowVideoPlayerIndex].aspectRatio = VideoAspectRatio.Stretch;
@@ -53,11 +60,26 @@ public class VideoManager : Singleton<VideoManager>
     }
 
     public void CloseFullScreen(){
+
+        inFullScreen = false;
+
         videoPlayers[nowVideoPlayerIndex].renderMode = VideoRenderMode.MaterialOverride;
         videoPlayers[nowVideoPlayerIndex].targetMaterialRenderer = this.targetMaterialRenderers[nowVideoPlayerIndex];
         
         closeButton.SetActive(false);
 
         canvasFooter.SetActive(true);
+
+        if(!onTrackingMarker){
+            DeactiveVideo();
+        }
+    }
+
+    public bool GetInFullScreen(){
+        return this.inFullScreen;
+    }
+
+    public void SetOnTrackingMarker(bool value){
+        onTrackingMarker = value;
     }
 }
