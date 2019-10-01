@@ -102,7 +102,7 @@ public class ImageTargetController : MonoBehaviour
         }
         else if (type == PathType.StreamingAssets)
         {
-            path = Utility.AddFileHeader(Application.streamingAssetsPath + "/" + path);
+            path = Utility.AddFileHeader(Application.streamingAssetsPath + "/Markers/" + path);
         }
         Debug.Log("[EasyAR]:" + path);
         www = new WWW(path);
@@ -210,6 +210,7 @@ public class ImageTargetController : MonoBehaviour
     public void OnLost()
     {
         // Debug.Log("[EasyAR] OnLost targtet name: " + target.name());
+        VideoManager.Instance.DeactiveVideo();
         if(isDynamic){
             gameObject.SetActive(false);
             for (int i = 0; i < transform.childCount; i++)
@@ -229,6 +230,8 @@ public class ImageTargetController : MonoBehaviour
             gameObject.SetActive(true);
             
             transform.GetChild(0).gameObject.SetActive(true);
+
+            VideoManager.Instance.SetIndex(markerIndex);
             
             // for (int i = 0; i < transform.childCount; i++)
             // {

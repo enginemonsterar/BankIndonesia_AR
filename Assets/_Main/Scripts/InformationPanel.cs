@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.UI;
 using Michsky.UI.ModernUIPack;
 
@@ -14,6 +15,7 @@ public class InformationPanel : MonoBehaviour
 
     private InfoMode nowMode = InfoMode.PhotoMode;
 
+    [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private SwitchManager mainSwitcherManager;
     [SerializeField] private Image photoSwitchImage;
     [SerializeField] private Image videoSwitchImage;
@@ -66,6 +68,8 @@ public class InformationPanel : MonoBehaviour
         videoPlane.SetActive(true);
 
         infoBox.GetComponent<AudioSource>().Pause();
+
+        videoPlayer.gameObject.SetActive(true);
     }
 
     
