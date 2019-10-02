@@ -154,5 +154,23 @@ namespace Michsky.UI.ModernUIPack
                     PlayerPrefs.SetString(switchTag + "Switch", "true");
             }
         }
+
+        public void SetIsOn(bool value){
+
+            isOn = value;
+
+            if (isOn == true)
+            {
+                switchAnimator.Play("Switch On");
+                isOn = true;
+            }
+
+            else
+            {
+                switchAnimator.Play("Switch Off");
+                isOn = false;
+            }
+
+        }
     }
 }
