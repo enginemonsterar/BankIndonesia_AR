@@ -9,6 +9,7 @@ public class QuizManager : Singleton<QuizManager>
 {
     [SerializeField] private GameObject quizPanel;
     [SerializeField] private SwitchManager[] switchManagers;
+    [SerializeField] private AudioClip trueClip;
     private int nowQuesIndex;
     private List<Question> questions = new List<Question>();
 
@@ -95,6 +96,7 @@ public class QuizManager : Singleton<QuizManager>
             if(PrefsManager.Instance.CoinMoneyColletions < 8)
                 PrefsManager.Instance.CoinMoneyColletions++;
 
+            GetComponent<AudioSource>().PlayOneShot(trueClip);
             
         }
 
