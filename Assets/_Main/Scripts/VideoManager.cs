@@ -68,7 +68,7 @@ public class VideoManager : Singleton<VideoManager>
         
         closeButton.SetActive(false);
 
-        canvasFooter.SetActive(true);
+        // canvasFooter.SetActive(true);
 
         if(!onTrackingMarker){
             DeactiveVideo();
